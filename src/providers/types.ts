@@ -13,6 +13,16 @@ export interface ProbeResult {
   jobIds: string[];
 }
 
+/** What the scanner knows when it fetches a board. */
+export interface FetchContext {
+  /**
+   * The scan's keywords. Platforms whose API lists jobs without descriptions (one
+   * extra request per job) search server-side with them first, so they don't fetch
+   * every job on a large board. The keyword matcher still decides what matches.
+   */
+  keywords: string[];
+}
+
 /**
  * One ATS platform. To support a new platform, implement this and add it to the registry.
  */
@@ -21,7 +31,7 @@ export interface AtsProvider {
   readonly label: string;
   apiUrl(token: string): string;
   parseUrl(url: URL): UrlMatch | null;
-  fetchJobs(company: Company): Promise<NormalizedJob[]>;
+  fetchJobs(company: Company, ctx?: FetchContext): Promise<NormalizedJob[]>;
   /** Checks whether `token` is a live board. Returns ok=false on 404. */
   probe(token: string): Promise<ProbeResult>;
 }

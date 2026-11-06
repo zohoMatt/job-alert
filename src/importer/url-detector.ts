@@ -9,7 +9,6 @@ export type Detection =
 
 /** Hosts we recognise but cannot scan (no public job board API, or not a job board). */
 const KNOWN_UNSUPPORTED: Array<[suffix: string, platform: string]> = [
-  ['myworkdayjobs.com', 'Workday'],
   ['icims.com', 'iCIMS'],
   ['linkedin.com', 'LinkedIn'],
   ['rippling.com', 'Rippling'],

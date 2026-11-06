@@ -13,18 +13,27 @@ export interface FetchOptions {
   timeoutMs?: number;
   /** Extra attempts after the first one, for network errors and 5xx/429 only. */
   retries?: number;
+  /** When set, sends a POST with this value as the JSON body. */
+  body?: unknown;
 }
 
 const USER_AGENT = 'job-alert/0.1 (personal job board watcher)';
 
 export async function fetchJson(url: string, opts: FetchOptions = {}): Promise<unknown> {
-  const { timeoutMs = 30_000, retries = 1 } = opts;
+  const { timeoutMs = 30_000, retries = 1, body } = opts;
+  const post = body !== undefined;
   let lastError: unknown;
   for (let attempt = 0; attempt <= retries; attempt++) {
     if (attempt > 0) await sleep(1_000 * attempt);
     try {
       const res = await fetch(url, {
-        headers: { accept: 'application/json', 'user-agent': USER_AGENT },
+        method: post ? 'POST' : 'GET',
+        headers: {
+          accept: 'application/json',
+          'user-agent': USER_AGENT,
+          ...(post ? { 'content-type': 'application/json' } : {}),
+        },
+        body: post ? JSON.stringify(body) : undefined,
         signal: AbortSignal.timeout(timeoutMs),
       });
       if (!res.ok) {

@@ -9,7 +9,8 @@ export type ManualAddResult =
   | { status: 'invalid'; input: string; message: string }
   | { status: 'error'; input: string; token: string; message: string };
 
-const TOKEN_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
+/** A board id. Workday ids have slash-separated parts (tenant/wd5/site). */
+const TOKEN_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*(?:\/[A-Za-z0-9._-]+)*$/;
 
 /** "figma, stripe ,,Figma" -> ["figma", "stripe"] (deduped, case-insensitive). */
 export function parseTokenList(input: string): string[] {

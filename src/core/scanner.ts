@@ -32,7 +32,7 @@ export async function runScan(opts: ScanOptions): Promise<ScanReport> {
     opts.companies.map((company) =>
       limit(async (): Promise<NormalizedJob[]> => {
         try {
-          return await getProvider(company.ats).fetchJobs(company);
+          return await getProvider(company.ats).fetchJobs(company, { keywords: opts.keywords });
         } catch (err) {
           errors.push({ company, message: (err as Error).message });
           return [];
