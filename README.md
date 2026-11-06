@@ -49,7 +49,21 @@ npm start -- --no-prompt   # reuse saved settings
 npm start -- --once        # one scan, then exit
 ```
 
-Each scan prints its start time, end time and duration, then how long the program has been running and when the next scan is. New matches are printed as `company · title · URL`. Ctrl+C stops after the current scan and prints the total run time.
+Each scan prints its start time, end time and duration, then how long the program has been running and when the next scan is. New matches are printed as `company · title · URL`.
+
+A status line at the bottom shows what the program is doing:
+
+```
+Searching · scan #3 · 12/44 companies · 4s
+Waiting · next scan at 15:05:00 (in 59m 12s) · s: scan now · Ctrl+C: quit
+```
+
+| Key | While waiting | While searching |
+|---|---|---|
+| `s` | Scan now. The next scheduled scan moves to one interval after this one. | Ignored (a message says so) |
+| `Ctrl+C` | Quit | Quit after the current scan (press again to force) |
+
+The status line and keys need an interactive terminal; with output piped to a file, only the log lines are written.
 
 ## Output
 
@@ -71,7 +85,7 @@ src/
   providers/            one file per ATS, behind the AtsProvider interface
   matching/             Matcher interface + KeywordMatcher
   core/                 scanner, scheduler, typed events, http, text helpers
-  output/               console and Markdown sinks (subscribe to engine events)
+  output/               console, status line and Markdown sinks (subscribe to engine events)
   store/                companies.json, config.json, matches.jsonl
 tests/                  vitest
 ```
@@ -80,7 +94,7 @@ tests/                  vitest
 
 - **New ATS**: implement `AtsProvider` (`src/providers/types.ts`), add it to `providers/registry.ts`.
 - **AI screening**: implement `Matcher` (`src/matching/types.ts`); it is async and returns `reason`/`score`.
-- **UI**: subscribe to `EngineEmitter` events (`src/core/events.ts`), like the console and Markdown sinks do.
+- **UI**: subscribe to `EngineEmitter` events (`src/core/events.ts`), like the console, status and Markdown sinks do. The `state` event gives `searching` / `waiting` (with next scan time); `Scheduler.triggerNow()` starts a scan on demand.
 - **User-added companies**: `src/companies/add-manual.ts` (used by the CLI prompt; reusable by a UI).
 
 ## Development

@@ -12,6 +12,8 @@ export interface ScanOptions {
   keywords: string[];
   log: MatchLog;
   concurrency?: number;
+  /** Called after each company's board is fetched (or failed). */
+  onProgress?: (done: number, total: number) => void;
 }
 
 /**
@@ -22,6 +24,8 @@ export async function runScan(opts: ScanOptions): Promise<ScanReport> {
   const startedAt = new Date();
   const limit = pLimit(opts.concurrency ?? 5);
   const errors: CompanyError[] = [];
+  const total = opts.companies.length;
+  let done = 0;
 
   const perCompany = await Promise.all(
     opts.companies.map((company) =>
@@ -31,6 +35,8 @@ export async function runScan(opts: ScanOptions): Promise<ScanReport> {
         } catch (err) {
           errors.push({ company, message: (err as Error).message });
           return [];
+        } finally {
+          opts.onProgress?.(++done, total);
         }
       }),
     ),

@@ -1,10 +1,13 @@
 import pc from 'picocolors';
 import { EngineEmitter } from '../../core/events.js';
 import { runScan } from '../../core/scanner.js';
-import { Scheduler } from '../../core/scheduler.js';
+import { Scheduler, type ScanTask } from '../../core/scheduler.js';
 import { KeywordMatcher } from '../../matching/keyword-matcher.js';
 import { attachConsoleSink } from '../../output/console-sink.js';
 import { attachMarkdownSink } from '../../output/markdown-sink.js';
+import { attachStatusSink } from '../../output/status-sink.js';
+import { Terminal } from '../../output/terminal.js';
+import { listenForKeys } from '../keyboard.js';
 import { emptyCompaniesFile, loadCompanies, saveCompanies } from '../../store/companies-store.js';
 import { loadConfig, saveConfig, type RunConfig } from '../../store/config-store.js';
 import { MatchLog } from '../../store/match-log.js';
@@ -48,15 +51,24 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   if (companies.length === 0) throw new Error('None of the selected companies are in companies.json.');
 
   const events = new EngineEmitter();
+  const term = new Terminal();
   const markdown = attachMarkdownSink(events, config.keywords);
-  attachConsoleSink(events, { markdownPath: markdown.currentPath });
+  attachConsoleSink(events, term, { markdownPath: markdown.currentPath });
+  attachStatusSink(events, term, { manualTrigger: !opts.once && process.stdin.isTTY === true });
 
   const log = await MatchLog.open();
   const matcher = new KeywordMatcher(config.keywords);
 
-  const scan = async (scanNo: number) => {
-    events.emit('scan:start', { scanNo, startedAt: new Date() });
-    const report = await runScan({ scanNo, companies, matcher, keywords: config.keywords, log });
+  const scan: ScanTask = async (scanNo, trigger) => {
+    events.emit('scan:start', { scanNo, startedAt: new Date(), trigger });
+    const report = await runScan({
+      scanNo,
+      companies,
+      matcher,
+      keywords: config.keywords,
+      log,
+      onProgress: (done, total) => events.emit('scan:progress', { scanNo, done, total }),
+    });
     await log.append(report.newMatches);
     events.emit('scan:end', report);
     await markdown.flush();
@@ -71,22 +83,34 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   });
 
   if (opts.once) {
-    await scan(1);
+    events.emit('state', { state: 'searching', scanNo: 1, nextScanAt: null });
+    await scan(1, 'scheduled');
+    events.emit('state', { state: 'stopped', scanNo: 1, nextScanAt: null });
     events.emit('run:stop', { startedAt: scheduler.startedAt, stoppedAt: new Date(), scans: 1 });
     return;
   }
 
   let stopping = false;
+  let stopKeys = () => {};
   const shutdown = async () => {
     if (stopping) process.exit(130); // second Ctrl+C: quit immediately
     stopping = true;
-    console.log(pc.dim('\nStopping (finishing the current scan)...'));
+    term.log(pc.dim('\nStopping (finishing the current scan; Ctrl+C again to force)...'));
     await scheduler.stop();
     await markdown.flush();
+    stopKeys();
     process.exit(0);
   };
   process.on('SIGINT', shutdown);
   process.on('SIGTERM', shutdown);
+
+  stopKeys = listenForKeys({
+    onQuit: () => void shutdown(),
+    onScanNow: () => {
+      if (stopping) return;
+      if (!scheduler.triggerNow()) term.log(pc.dim('  Already searching. Press s again once it is waiting.'));
+    },
+  });
 
   scheduler.start();
 }
