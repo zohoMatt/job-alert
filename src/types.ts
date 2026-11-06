@@ -1,4 +1,4 @@
-export const ATS_IDS = ['greenhouse', 'lever', 'ashby', 'workday', 'rippling', 'workable'] as const;
+export const ATS_IDS = ['greenhouse', 'lever', 'ashby', 'workday', 'rippling', 'workable', 'eightfold'] as const;
 export type AtsId = (typeof ATS_IDS)[number];
 
 /** A company board we can scan. `id` is `${ats}:${token}` (lower-cased). */

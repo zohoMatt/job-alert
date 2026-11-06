@@ -11,7 +11,9 @@ export type Detection =
 const KNOWN_UNSUPPORTED: Array<[suffix: string, platform: string]> = [
   ['icims.com', 'iCIMS'],
   ['linkedin.com', 'LinkedIn'],
-  ['jobs.netflix.net', 'Eightfold'],
+  // Eightfold sites whose API refuses requests (403).
+  ['apply.careers.microsoft.com', 'Eightfold (API blocked)'],
+  ['jobs.autodesk.com', 'Eightfold (API blocked)'],
   ['my.greenhouse.io', 'Greenhouse applicant portal (not a job board)'],
 ];
 

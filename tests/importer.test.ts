@@ -25,6 +25,8 @@ describe('detectUrl', () => {
     ['https://amgen.wd1.myworkdayjobs.com/Careers/job/Y_R-1', 'workday:token:amgen/wd1/Careers'],
     ['https://ats.rippling.com/cerby/jobs/abd15dc5?src=LinkedIn', 'rippling:token:cerby'],
     ['https://apply.workable.com/multimediallc/j/3BF366314B/', 'workable:token:multimediallc'],
+    ['https://explore.jobs.netflix.net/careers/job/790317589519?microsite=netflix.com&domain=netflix.com', 'eightfold:token:explore.jobs.netflix.net/netflix.com'],
+    ['https://apply.careers.microsoft.com/careers/job/1970393556955801?domain=microsoft.com', 'unsupported:Eightfold (API blocked)'],
     ['https://www.linkedin.com/jobs/view/4434897576/', 'unsupported:LinkedIn'],
     ['https://www.shopify.com/careers/x', 'unsupported:unknown (shopify.com)'],
     ['', 'none'],
