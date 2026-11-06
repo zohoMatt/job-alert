@@ -63,9 +63,14 @@ export async function importCompanies(
     ),
   );
 
+  const manualNames = new Set<string>();
   for (const c of opts.previous?.companies ?? []) {
-    if (c.source === 'manual' && !companies.has(c.id)) companies.set(c.id, c);
+    if (c.source !== 'manual') continue;
+    manualNames.add(normalizeName(c.name));
+    if (!companies.has(c.id)) companies.set(c.id, c);
   }
+  // A company added by hand is covered, so it is not reported as unsupported or unresolved.
+  const notManual = (x: { name: string }) => !manualNames.has(normalizeName(x.name));
 
   return {
     file: {
@@ -73,8 +78,8 @@ export async function importCompanies(
       generatedAt: new Date().toISOString(),
       sourceFile: opts.sourceFile,
       companies: [...companies.values()],
-      unresolved,
-      unsupported,
+      unresolved: unresolved.filter(notManual),
+      unsupported: unsupported.filter(notManual),
     },
     warnings,
     skippedRows,
