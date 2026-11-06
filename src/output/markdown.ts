@@ -42,10 +42,18 @@ function renderJob(m: MatchRecord): string {
     ['Matched', m.hits.map((h) => `\`${h.keyword}\` (${h.fields.join(', ')})`).join(' · ')],
   ];
   const body = j.description.replace(/```/g, "'''");
+  const postings =
+    j.postings && j.postings.length > 1
+      ? [
+          `- **Postings (${j.postings.length}):**`,
+          ...j.postings.map((p) => `  - ${p.locations.join('; ') || 'Location not listed'}: ${p.url ?? `id ${p.jobId}`}`),
+        ]
+      : [];
   return [
     `### ${escapeMd(j.companyName)} — ${escapeMd(j.title)}`,
     '',
     ...meta.filter(([, v]) => v).map(([k, v]) => `- **${k}:** ${v}`),
+    ...postings,
     '',
     '<details><summary>Job description</summary>',
     '',

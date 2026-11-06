@@ -77,7 +77,9 @@ The result file paths are printed at startup and again on exit. On exit, the Mar
 | `output/jobs-YYYY-MM-DD.md` | Human-readable. Newest scan on top, each job with link, location, salary, which keyword matched in which field, and the full description. |
 | `output/matches.jsonl` | One JSON record per match, for tools. |
 
-A job is **new** if its key is not in `output/matches.jsonl` yet. That file survives restarts; delete it to report everything again.
+Companies often post one role several times, once per location (e.g. "Remote US" and "Remote Canada"). Postings with the same company and title (ignoring case and spacing) are merged into one entry that lists every location, with one link per location in the Markdown file. Each posting is matched on its own first, so a location keyword keeps only the matching locations.
+
+A role is **new** if neither the role (company + title) nor any of its postings is in `output/matches.jsonl` yet, so a role is reported once even when a posting for another location appears later. That file survives restarts; delete it to report everything again.
 
 ## Layout
 

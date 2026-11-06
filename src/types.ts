@@ -39,6 +39,19 @@ export interface NormalizedJob {
   salary: string | null;
   /** Plain-text job description. */
   description: string;
+  /**
+   * Set when several postings of the same role (same company and title, usually one
+   * per location) were merged into this job. Each keeps its own id, link and location.
+   */
+  postings?: Posting[];
+}
+
+/** One posting of a merged role. */
+export interface Posting {
+  key: string;
+  jobId: string;
+  url: string | null;
+  locations: string[];
 }
 
 export function companyId(ats: AtsId, token: string): string {

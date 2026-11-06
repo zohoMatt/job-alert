@@ -4,6 +4,7 @@ import { getProvider } from '../providers/registry.js';
 import type { MatchLog, MatchRecord } from '../store/match-log.js';
 import type { Company, NormalizedJob } from '../types.js';
 import type { CompanyError, ScanReport } from './events.js';
+import { mergePostings, type MatchedJob } from './merge.js';
 
 export interface ScanOptions {
   scanNo: number;
@@ -46,16 +47,22 @@ export async function runScan(opts: ScanOptions): Promise<ScanReport> {
   const foundAt = new Date().toISOString();
   const newMatches: MatchRecord[] = [];
   const seenThisScan = new Set<string>();
-  let matched = 0;
 
+  // Match each posting on its own (so location keywords only keep matching locations),
+  // then merge postings of the same role into one job.
+  const matchedPostings: MatchedJob[] = [];
   for (const job of jobs) {
     if (seenThisScan.has(job.key)) continue;
     seenThisScan.add(job.key);
     const result = await opts.matcher.match(job);
-    if (!result.matched) continue;
-    matched++;
-    if (!opts.log.has(job.key)) {
-      newMatches.push({ foundAt, scanNo: opts.scanNo, keywords: opts.keywords, hits: result.hits, job });
+    if (result.matched) matchedPostings.push({ job, hits: result.hits });
+  }
+
+  const roles = mergePostings(matchedPostings);
+  const matched = roles.length;
+  for (const { job, hits } of roles) {
+    if (!opts.log.isKnown(job)) {
+      newMatches.push({ foundAt, scanNo: opts.scanNo, keywords: opts.keywords, hits, job });
     }
   }
 

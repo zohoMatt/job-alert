@@ -1,6 +1,7 @@
 import { appendFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import type { KeywordHit } from '../matching/types.js';
+import { identityKeys } from '../core/merge.js';
 import type { NormalizedJob } from '../types.js';
 import { readTextIfExists } from './fs-utils.js';
 import { paths } from './paths.js';
@@ -31,7 +32,7 @@ export class MatchLog {
       if (!line.trim()) continue;
       try {
         const rec = JSON.parse(line) as Partial<MatchRecord>;
-        if (rec.job?.key) log.keys.add(rec.job.key);
+        if (rec.job?.key) log.remember(rec.job);
       } catch {
         // Ignore a corrupt line (e.g. from a crash mid-write) instead of refusing to start.
       }
@@ -47,10 +48,19 @@ export class MatchLog {
     return this.keys.has(key);
   }
 
+  /** True when the job, its role (company + title) or any of its postings was reported before. */
+  isKnown(job: NormalizedJob): boolean {
+    return identityKeys(job).some((k) => this.keys.has(k));
+  }
+
+  private remember(job: NormalizedJob): void {
+    for (const k of identityKeys(job)) this.keys.add(k);
+  }
+
   async append(records: MatchRecord[]): Promise<void> {
     if (records.length === 0) return;
     await mkdir(path.dirname(this.file), { recursive: true });
     await appendFile(this.file, records.map((r) => JSON.stringify(r)).join('\n') + '\n', 'utf8');
-    for (const r of records) this.keys.add(r.job.key);
+    for (const r of records) this.remember(r.job);
   }
 }

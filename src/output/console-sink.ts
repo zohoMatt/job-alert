@@ -5,6 +5,13 @@ import { paths } from '../store/paths.js';
 import { displayPath } from './locations.js';
 import type { Terminal } from './terminal.js';
 
+/** "Remote US / Remote Canada", or "Remote US / Canada / Spain +3" past three locations. */
+export function summarizeLocations(locations: string[], postings: number): string {
+  if (locations.length === 0) return `${postings} postings`;
+  const shown = locations.slice(0, 3).join(' / ');
+  return locations.length > 3 ? `${shown} +${locations.length - 3}` : shown;
+}
+
 /** Prints engine events to the terminal, above the status line. */
 export function attachConsoleSink(
   events: EngineEmitter,
@@ -31,7 +38,8 @@ export function attachConsoleSink(
   events.on('scan:end', (r) => {
     for (const m of r.newMatches) {
       const j = m.job;
-      log(`  ${pc.green(pc.bold('[NEW]'))} ${pc.bold(j.companyName)} · ${j.title}${j.url ? ` · ${pc.underline(j.url)}` : ''}`);
+      const where = j.postings && j.postings.length > 1 ? ` · ${pc.cyan(summarizeLocations(j.locations, j.postings.length))}` : '';
+      log(`  ${pc.green(pc.bold('[NEW]'))} ${pc.bold(j.companyName)} · ${j.title}${where}${j.url ? ` · ${pc.underline(j.url)}` : ''}`);
     }
     for (const e of r.errors) {
       log(`  ${pc.red('[ERR]')} ${e.company.name} (${e.company.ats}/${e.company.token}): ${e.message}`);
