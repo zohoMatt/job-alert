@@ -1,0 +1,817 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-06T04:35:44.758Z",
+  "sourceFile": "C:\\Users\\Matt Zuo\\Desktop\\resumes\\all-applications\\Tasks Tracker 3a3de1a8c70c80099f9eee489b1045a0.csv",
+  "companies": [
+    {
+      "id": "greenhouse:affirm",
+      "name": "Affirm",
+      "ats": "greenhouse",
+      "token": "affirm",
+      "api": "https://boards-api.greenhouse.io/v1/boards/affirm/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/affirm/jobs/7984714003?gh_src=689c81d53us"
+      ]
+    },
+    {
+      "id": "greenhouse:airbnb",
+      "name": "AirBnb",
+      "ats": "greenhouse",
+      "token": "airbnb",
+      "api": "https://boards-api.greenhouse.io/v1/boards/airbnb/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://careers.airbnb.com/positions/8077451/?gh_jid=8077451&gh_src=34ewj2"
+      ]
+    },
+    {
+      "id": "ashby:ashby",
+      "name": "Ashby",
+      "ats": "ashby",
+      "token": "ashby",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/ashby",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://www.ashbyhq.com/careers?ashby_jid=751768c6-8d97-4e91-a57d-6b85ce4b5a37&utm_source=PRgMeEgv1Z"
+      ]
+    },
+    {
+      "id": "greenhouse:calendly",
+      "name": "Calendly",
+      "ats": "greenhouse",
+      "token": "calendly",
+      "api": "https://boards-api.greenhouse.io/v1/boards/calendly/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/calendly/jobs/8846049002?gh_src=f62b9zme2us"
+      ]
+    },
+    {
+      "id": "greenhouse:clearstreet",
+      "name": "Clear Street",
+      "ats": "greenhouse",
+      "token": "clearstreet",
+      "api": "https://boards-api.greenhouse.io/v1/boards/clearstreet/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/clearstreet/jobs/8053500",
+        "https://job-boards.greenhouse.io/clearstreet/jobs/8233744?gh_src=1cc587701us"
+      ]
+    },
+    {
+      "id": "ashby:clickhouse",
+      "name": "ClickHouse",
+      "ats": "ashby",
+      "token": "clickhouse",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/clickhouse",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/clickhouse/d24579a7-6d8c-4433-a9af-ddde1878e092?utm_source=linkedinpaid"
+      ]
+    },
+    {
+      "id": "ashby:clickup",
+      "name": "ClickUp",
+      "ats": "ashby",
+      "token": "clickup",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/clickup",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/clickup/dce7700d-54b5-4f80-85bc-5547663473b2?departmentId=d793d5a8-bf30-45ba-bcde-e677b38b91a6&embed=js&locationId=841fe08d-4fb1-4861-b336-ceb93ba1cdb2",
+        "https://jobs.ashbyhq.com/clickup/b6c0a31b-83b6-43f6-8e50-0d91dda7c767?utm_source=OrAo48EPGZ"
+      ]
+    },
+    {
+      "id": "ashby:close",
+      "name": "Close",
+      "ats": "ashby",
+      "token": "Close",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/Close",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/Close/8b67d1fa-5852-4f7d-b8c2-cedc20b16da7?utm_source=LinkedInPaid"
+      ]
+    },
+    {
+      "id": "greenhouse:coinbase",
+      "name": "Coinbase",
+      "ats": "greenhouse",
+      "token": "coinbase",
+      "api": "https://boards-api.greenhouse.io/v1/boards/coinbase/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/embed/job_app?token=8088201&for=coinbase"
+      ]
+    },
+    {
+      "id": "ashby:deepgram",
+      "name": "Deepgram",
+      "ats": "ashby",
+      "token": "Deepgram",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/Deepgram",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/Deepgram/8cd2cf6b-ec99-4747-bb0a-06c149a628f0?source=rLVNdemx1O"
+      ]
+    },
+    {
+      "id": "greenhouse:elastic",
+      "name": "Elastic",
+      "ats": "greenhouse",
+      "token": "elastic",
+      "api": "https://boards-api.greenhouse.io/v1/boards/elastic/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://jobs.elastic.co/jobs/engineering/united-states/senior-software-engineer-/8069178?gh_src=ubgar5dh1&gh_jid=8069178"
+      ]
+    },
+    {
+      "id": "ashby:elevenlabs",
+      "name": "ElevenLabs",
+      "ats": "ashby",
+      "token": "elevenlabs",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/elevenlabs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/elevenlabs/e6924f60-c8cc-42b3-9d05-2442ec30e12d?utm_source=linkedin"
+      ]
+    },
+    {
+      "id": "greenhouse:figma",
+      "name": "Figma",
+      "ats": "greenhouse",
+      "token": "figma",
+      "api": "https://boards-api.greenhouse.io/v1/boards/figma/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/figma/jobs/5552560004?gh_jid=5552560004&gh_src=28109e334us",
+        "https://job-boards.greenhouse.io/figma/jobs/5552522004?gh_jid=5552522004",
+        "https://job-boards.greenhouse.io/figma/jobs/6100023004?gh_jid=6100023004"
+      ]
+    },
+    {
+      "id": "ashby:hims-and-hers",
+      "name": "Him & hers",
+      "ats": "ashby",
+      "token": "hims-and-hers",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/hims-and-hers",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/hims-and-hers/45bdb7e5-14a8-494f-8fcb-30e42f0be67a?utm_source=linkedinpremium"
+      ]
+    },
+    {
+      "id": "ashby:horizon3ai",
+      "name": "Horizon3",
+      "ats": "ashby",
+      "token": "horizon3ai",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/horizon3ai",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/horizon3ai/4d1c1e5d-ea95-4832-9fe8-597def9ead7c?src=LinkedIn"
+      ]
+    },
+    {
+      "id": "greenhouse:hypori",
+      "name": "Hypori",
+      "ats": "greenhouse",
+      "token": "hypori",
+      "api": "https://boards-api.greenhouse.io/v1/boards/hypori/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/hypori/jobs/6208453004"
+      ]
+    },
+    {
+      "id": "lever:iheartjane",
+      "name": "Jane Technologies",
+      "ats": "lever",
+      "token": "iheartjane",
+      "api": "https://api.lever.co/v0/postings/iheartjane?mode=json",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.lever.co/iheartjane/440b0596-62b8-4a25-b88e-1d6e2bb144d0"
+      ]
+    },
+    {
+      "id": "ashby:linear",
+      "name": "Linear",
+      "ats": "ashby",
+      "token": "linear",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/linear",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://linear.app/careers/b4a7764e-c680-4bdf-9956-dc78f2ca94d5?ashby_jid=b4a7764e-c680-4bdf-9956-dc78f2ca94d5"
+      ]
+    },
+    {
+      "id": "greenhouse:lts",
+      "name": "LTS",
+      "ats": "greenhouse",
+      "token": "lts",
+      "api": "https://boards-api.greenhouse.io/v1/boards/lts/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/lts/jobs/4340405009"
+      ]
+    },
+    {
+      "id": "greenhouse:machinifyinc",
+      "name": "Machinify",
+      "ats": "greenhouse",
+      "token": "machinifyinc",
+      "api": "https://boards-api.greenhouse.io/v1/boards/machinifyinc/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/machinifyinc/jobs/4110559009/confirmation?gh_src=7ria3ymg9us"
+      ]
+    },
+    {
+      "id": "greenhouse:mavenclinic",
+      "name": "Maven Clinic",
+      "ats": "greenhouse",
+      "token": "mavenclinic",
+      "api": "https://boards-api.greenhouse.io/v1/boards/mavenclinic/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/mavenclinic/jobs/8362687002?gh_src=e11878472us"
+      ]
+    },
+    {
+      "id": "greenhouse:mercury",
+      "name": "Mercury",
+      "ats": "greenhouse",
+      "token": "mercury",
+      "api": "https://boards-api.greenhouse.io/v1/boards/mercury/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/mercury/jobs/6116808004",
+        "https://job-boards.greenhouse.io/mercury/jobs/6110081004"
+      ]
+    },
+    {
+      "id": "greenhouse:consensys",
+      "name": "MetaMask",
+      "ats": "greenhouse",
+      "token": "consensys",
+      "api": "https://boards-api.greenhouse.io/v1/boards/consensys/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/consensys/jobs/8259010"
+      ]
+    },
+    {
+      "id": "greenhouse:nebius",
+      "name": "Nebius",
+      "ats": "greenhouse",
+      "token": "nebius",
+      "api": "https://boards-api.greenhouse.io/v1/boards/nebius/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://careers.nebius.com/?gh_jid=4872193101&gh_src=0c9005d2teu"
+      ]
+    },
+    {
+      "id": "ashby:nextpatient",
+      "name": "Next Patient",
+      "ats": "ashby",
+      "token": "NextPatient",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/NextPatient",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/NextPatient/80fcc0cc-6d47-4816-9d55-0d10b1646cb3?utm_source=v7oaz3aLLe&source=LinkedIn"
+      ]
+    },
+    {
+      "id": "ashby:office-hours",
+      "name": "Office Hours",
+      "ats": "ashby",
+      "token": "office-hours",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/office-hours",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/office-hours/e80923fe-f586-4dff-8ade-7811326c31a3?utm_source=6rBgxjV1e4"
+      ]
+    },
+    {
+      "id": "ashby:openrouter",
+      "name": "OpenRouter",
+      "ats": "ashby",
+      "token": "openrouter",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/openrouter",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/openrouter/dcc05e06-39fa-4860-a50c-5e2f8d57263a?utm_source=40QEVVG6mn"
+      ]
+    },
+    {
+      "id": "ashby:phantom",
+      "name": "Phantom",
+      "ats": "ashby",
+      "token": "phantom",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/phantom",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/phantom/e7b83c02-55c2-4037-9209-93deb3b7492c"
+      ]
+    },
+    {
+      "id": "greenhouse:reddit",
+      "name": "Reddit",
+      "ats": "greenhouse",
+      "token": "reddit",
+      "api": "https://boards-api.greenhouse.io/v1/boards/reddit/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/reddit/jobs/7751064",
+        "https://job-boards.greenhouse.io/reddit/jobs/7976852",
+        "https://job-boards.greenhouse.io/reddit/jobs/8120262?gh_src=5ffahaug1us"
+      ]
+    },
+    {
+      "id": "ashby:rula",
+      "name": "Rula",
+      "ats": "ashby",
+      "token": "rula",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/rula",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/rula/d6b330b2-65c8-4d8a-8951-84cf5868ab98"
+      ]
+    },
+    {
+      "id": "greenhouse:samsara",
+      "name": "Samsara",
+      "ats": "greenhouse",
+      "token": "samsara",
+      "api": "https://boards-api.greenhouse.io/v1/boards/samsara/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://www.samsara.com/company/careers/roles/8055217?gh_jid=8055217&gh_src=a42fbb361"
+      ]
+    },
+    {
+      "id": "ashby:sardine",
+      "name": "Sardine",
+      "ats": "ashby",
+      "token": "sardine",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/sardine",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/sardine/e8b95f0e-8bd2-4263-904a-563214a9fde5"
+      ]
+    },
+    {
+      "id": "greenhouse:seatgeek",
+      "name": "SeatGeek",
+      "ats": "greenhouse",
+      "token": "seatgeek",
+      "api": "https://boards-api.greenhouse.io/v1/boards/seatgeek/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://seatgeek.com/jobs/8156627?gh_jid=8156627&gh_src=Blind"
+      ]
+    },
+    {
+      "id": "ashby:stable",
+      "name": "Stable",
+      "ats": "ashby",
+      "token": "stable",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/stable",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/stable/17ed97f1-7418-4bd0-9a83-2eaccb0212c7/application?utm_source=q1bZjKYGjO"
+      ]
+    },
+    {
+      "id": "greenhouse:starburst",
+      "name": "Starburst",
+      "ats": "greenhouse",
+      "token": "starburst",
+      "api": "https://boards-api.greenhouse.io/v1/boards/starburst/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/starburst/jobs/5432864008"
+      ]
+    },
+    {
+      "id": "greenhouse:stripe",
+      "name": "Stripe",
+      "ats": "greenhouse",
+      "token": "stripe",
+      "api": "https://boards-api.greenhouse.io/v1/boards/stripe/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://stripe.com/careers/listing/full-stack-engineer-support-experience-greater-china-support/8039548?gh_jid=8039548"
+      ]
+    },
+    {
+      "id": "greenhouse:tailscale",
+      "name": "Tailscale",
+      "ats": "greenhouse",
+      "token": "tailscale",
+      "api": "https://boards-api.greenhouse.io/v1/boards/tailscale/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/tailscale/jobs/4707457005?gh_src=4fd1e7935us"
+      ]
+    },
+    {
+      "id": "ashby:tensorwave",
+      "name": "TensorWave",
+      "ats": "ashby",
+      "token": "TensorWave",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/TensorWave",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/TensorWave/31e9b0a4-d5fe-4227-9714-1d0885cbe2b7?utm_source=LinkedInPaid"
+      ]
+    },
+    {
+      "id": "ashby:trm-labs",
+      "name": "TRM Labs",
+      "ats": "ashby",
+      "token": "trm-labs",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/trm-labs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/trm-labs/178c4bed-36ac-4705-97fa-48ed08d5876d"
+      ]
+    },
+    {
+      "id": "ashby:turquoise-health",
+      "name": "Turquoise",
+      "ats": "ashby",
+      "token": "turquoise-health",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/turquoise-health",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/turquoise-health/1fbc3cd7-fc6a-4b8a-8e73-d2c14f737826?utm_source=43A0Q3KXo2",
+        "https://jobs.ashbyhq.com/turquoise-health/806f5f93-6eb6-4aea-9483-f8f7458e6730/application?utm_source=43A0Q3KXo2"
+      ]
+    },
+    {
+      "id": "greenhouse:upstart",
+      "name": "Upstart",
+      "ats": "greenhouse",
+      "token": "upstart",
+      "api": "https://boards-api.greenhouse.io/v1/boards/upstart/jobs",
+      "source": "notion",
+      "resolvedBy": "probe",
+      "sampleUrls": [
+        "https://careers.upstart.com/jobs/senior-software-engineer-unsecured-installments-burlingame-california-united-states?gh_jid=8047138&gh_src=8c01b2f01"
+      ]
+    },
+    {
+      "id": "ashby:valon",
+      "name": "Valon",
+      "ats": "ashby",
+      "token": "Valon",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/Valon",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/Valon/5be21988-9138-49d9-85bd-ffb4a2dd503d"
+      ]
+    },
+    {
+      "id": "greenhouse:vercel",
+      "name": "Vercel",
+      "ats": "greenhouse",
+      "token": "vercel",
+      "api": "https://boards-api.greenhouse.io/v1/boards/vercel/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://job-boards.greenhouse.io/vercel/jobs/5732855004?gh_src=Blind"
+      ]
+    },
+    {
+      "id": "ashby:weave",
+      "name": "Weave",
+      "ats": "ashby",
+      "token": "weave",
+      "api": "https://api.ashbyhq.com/posting-api/job-board/weave",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://jobs.ashbyhq.com/weave/e68c935e-7313-48d2-86d5-0ddc9c555d4e?utm_source=AvJaxJqGKY"
+      ]
+    }
+  ],
+  "unresolved": [],
+  "unsupported": [
+    {
+      "name": "Alkami",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://alkami.wd12.myworkdayjobs.com/en-US/alkami/job/Sr-Software-Engineer--MANTL-_JR-000867"
+      ]
+    },
+    {
+      "name": "Amgen",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/Senior-UI-Developer--AI-Studio_R-256347"
+      ]
+    },
+    {
+      "name": "Autodesk",
+      "platforms": [
+        "unknown (jobs.autodesk.com)"
+      ],
+      "sampleUrls": [
+        "https://jobs.autodesk.com/careers/job/1443152976704?domain=autodesk.com&src=JB-10065&source=LinkedIn"
+      ]
+    },
+    {
+      "name": "Cerby",
+      "platforms": [
+        "Rippling"
+      ],
+      "sampleUrls": [
+        "https://ats.rippling.com/cerby/jobs/abd15dc5-39d6-4a2c-bc43-cafe55765312?src=LinkedIn"
+      ]
+    },
+    {
+      "name": "Circle",
+      "platforms": [
+        "unknown (careers.circle.com)"
+      ],
+      "sampleUrls": [
+        "https://careers.circle.com/us/en/job/CIICIRUSJR101099EXTERNALENUS/Senior-Software-Engineer-Frontend?utm_source=linkedin&utm_medium=phenom-feeds&src=LinkedIn"
+      ]
+    },
+    {
+      "name": "Cisco",
+      "platforms": [
+        "unknown (careers.cisco.com)"
+      ],
+      "sampleUrls": [
+        "https://careers.cisco.com/global/en/job/CISCISGLOBAL2023061EXTERNALENGLOBAL/UI-Engineer-North-Carolina-Hybrid?utm_source=linkedin&utm_medium=phenom-feeds"
+      ]
+    },
+    {
+      "name": "ComPsych",
+      "platforms": [
+        "iCIMS"
+      ],
+      "sampleUrls": [
+        "https://careers-compsych.icims.com/jobs/2242/senior-frontend-engineer/job?mode=submit_apply&from=assessment"
+      ]
+    },
+    {
+      "name": "Confluent",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "CVS",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers/job/Senior-Web-Developer_R0879151-1"
+      ]
+    },
+    {
+      "name": "Discord",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "Docker",
+      "platforms": [
+        "LinkedIn"
+      ],
+      "sampleUrls": [
+        "https://www.linkedin.com/jobs/view/4440383410/?alternateChannel=search&eBP=CwEAAAGgFmMjR4nNHBXT0MsMLRliicLyAVvv20phLLJMBnY8Qk8eixHIQNddhoIJEj2YgeaXkiSDMnF_Gn8HVGOgmWDrc6uZ5T852W9jnna7qO9HMuyji9s8g_WECoZhao3jVQ2vgixUDL4JQvrSdlIIFPBASz_sVksBGCkr54-7Q_TzkSWa5SYtRyzQpwkKdPrKcQ7Y6Hi74o7o6zDQ58YGj6jYtEAnlmdTIb7V5I6g2UoS3MDTNJe9JRhek7NTyiAsPfqkKulpsoO5loRK579m6Bi4iwqcmzOm1_ebL1vSatVwUaSmhW9C7sgrcgkTAh7VDDz593_P-4QVpiDE6tZXBrmj32Q6GiYFiwb-dThvZ613nhHoS6nb8_NtPQpbuiQqb11x08h9uXfGGmEN7iX9OFC4dSxeyTeis2gsclPsGnWxXoHCZbkSPOQBJG8ESlUltQ&refId=rciSqAJ6tKAQpvd4W5akjw%3D%3D&trackingId=5FYZUHSiy6iqp8cLSqgCkg%3D%3D"
+      ]
+    },
+    {
+      "name": "First Citizens Bank",
+      "platforms": [
+        "unknown (jobs.firstcitizens.com)"
+      ],
+      "sampleUrls": [
+        "https://jobs.firstcitizens.com/jobs/33575?lang=en-us&iis=Social+Media/Job+Boards&iisn=LinkedIn"
+      ]
+    },
+    {
+      "name": "Genki",
+      "platforms": [
+        "LinkedIn"
+      ],
+      "sampleUrls": [
+        "https://www.linkedin.com/jobs/search-results/?currentJobId=4416086670&eBP=NOT_ELIGIBLE_FOR_CHARGING&refId=tPa6VhddGYYMhpKcemDang%3D%3D&trackingId=zgqVxwNBlDZb25%2F1qx6o8g%3D%3D&keywords=frontend%20engineer%20remote&origin=SUGGESTION&start=25"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "platforms": [
+        "iCIMS"
+      ],
+      "sampleUrls": [
+        "https://careers-githubinc.icims.com/jobs/5737/senior-software-engineer/job?mode=submit_apply"
+      ]
+    },
+    {
+      "name": "Google",
+      "platforms": [
+        "unknown (google.com)"
+      ],
+      "sampleUrls": [
+        "https://www.google.com/about/careers/applications/jobs/results/78750744961786566-software-engineer-iii/"
+      ]
+    },
+    {
+      "name": "Happy Money",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "HOKA (Deckers)",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://deckers.wd5.myworkdayjobs.com/en-US/Deckers/job/US---California-Remote/Sr-UI-Developer--eCommerce--HOKA-NA_20105"
+      ]
+    },
+    {
+      "name": "Instacart",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "Intuit",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "Limble",
+      "platforms": [
+        "Rippling"
+      ],
+      "sampleUrls": [
+        "https://ats.rippling.com/limble-solutions/jobs/c8a9a793-49f5-4506-926a-2138ff4f00b3?jobSite=LinkedIn"
+      ]
+    },
+    {
+      "name": "Medallion",
+      "platforms": [
+        "LinkedIn"
+      ],
+      "sampleUrls": [
+        "https://www.linkedin.com/jobs/view/4416334782/"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "platforms": [
+        "unknown (apply.careers.microsoft.com)"
+      ],
+      "sampleUrls": [
+        "https://apply.careers.microsoft.com/careers/job/1970393556955801?utm_source=linkedin&domain=microsoft.com&src=LinkedIn"
+      ]
+    },
+    {
+      "name": "Multi Media LLC",
+      "platforms": [
+        "Workable"
+      ],
+      "sampleUrls": [
+        "https://apply.workable.com/multimediallc/j/3BF366314B/"
+      ]
+    },
+    {
+      "name": "Netflix",
+      "platforms": [
+        "LinkedIn",
+        "Eightfold"
+      ],
+      "sampleUrls": [
+        "https://www.linkedin.com/jobs/view/4434897576/",
+        "https://explore.jobs.netflix.net/careers/job/790317589519?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com",
+        "https://explore.jobs.netflix.net/careers/job/790298020874?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com"
+      ]
+    },
+    {
+      "name": "Prysm Health",
+      "platforms": [
+        "unknown (prysm.health)"
+      ],
+      "sampleUrls": [
+        "https://prysm.health/careers/frontend-engineer/"
+      ]
+    },
+    {
+      "name": "Salesforce",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Senior---Lead-Software-Engineer--Full-Stack--Product-_JR343623"
+      ]
+    },
+    {
+      "name": "Shopify",
+      "platforms": [
+        "unknown (shopify.com)"
+      ],
+      "sampleUrls": [
+        "https://www.shopify.com/careers/software-engineers-frontend_819eb2d1-1bf6-4f0d-91dd-419aea8bd9d5",
+        "https://www.shopify.com/careers/software-engineers_ea5811c0-0353-4468-a1a5-0ef776748b31"
+      ]
+    },
+    {
+      "name": "Trunk Tools",
+      "platforms": [
+        "unknown (trunktools.com)"
+      ],
+      "sampleUrls": [
+        "https://trunktools.com/careers/1d862ead-741b-4ce2-83f4-d914393b9ad3/"
+      ]
+    },
+    {
+      "name": "Twilio",
+      "platforms": [
+        "no URL"
+      ],
+      "sampleUrls": []
+    },
+    {
+      "name": "Yahoo",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://ouryahoo.wd5.myworkdayjobs.com/en-US/careers/job/Sr-Software-Web-Engineer--Yahoo-Mail_JR0027383"
+      ]
+    },
+    {
+      "name": "Zillow",
+      "platforms": [
+        "Workday"
+      ],
+      "sampleUrls": [
+        "https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/Senior-Software-Development-Engineer_P748924-1"
+      ]
+    }
+  ]
+}
