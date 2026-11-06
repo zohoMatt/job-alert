@@ -8,7 +8,7 @@ Scans Greenhouse, Lever and Ashby job boards on an interval and reports new jobs
 npm install
 ```
 
-Requires Node.js 22+.
+Requires Node.js 22+. Works on macOS, Windows and Linux.
 
 ## 1. Import companies from Notion
 
@@ -47,6 +47,7 @@ Nothing is saved until you confirm. Then your answers go to `data/config.json` (
 ```bash
 npm start -- --no-prompt   # reuse saved settings
 npm start -- --once        # one scan, then exit
+npm start -- --no-open     # do not open the result file on exit
 ```
 
 Each scan prints its start time, end time and duration, then how long the program has been running and when the next scan is. New matches are printed as `company · title · URL`.
@@ -54,16 +55,18 @@ Each scan prints its start time, end time and duration, then how long the progra
 A status line at the bottom shows what the program is doing:
 
 ```
-Searching · scan #3 · 12/44 companies · 4s
-Waiting · next scan at 15:05:00 (in 59m 12s) · s: scan now · Ctrl+C: quit
+Searching · scan #3 · 12/44 companies · 4s · q: quit
+Waiting · next scan at 15:05:00 (in 59m 12s) · s: scan now · q: quit
 ```
 
 | Key | While waiting | While searching |
 |---|---|---|
 | `s` | Scan now. The next scheduled scan moves to one interval after this one. | Ignored (a message says so) |
-| `Ctrl+C` | Quit | Quit after the current scan (press again to force) |
+| `q` or `Ctrl+C` | Quit | Quit after the current scan (press again to force) |
 
 The status line and keys need an interactive terminal; with output piped to a file, only the log lines are written.
+
+The result file paths are printed at startup and again on exit. On exit, the Markdown file written in this run (or else the most recent one) opens in your default app: `open` on macOS, `explorer.exe` on Windows, `xdg-open` on Linux. Use `--no-open` to turn this off; it is also skipped when output is piped.
 
 ## Output
 

@@ -7,9 +7,10 @@ export interface KeyHandlers {
 
 /**
  * Listens for single key presses while the scheduler runs:
- *   s       -> scan now
- *   Ctrl+C  -> quit (raw mode swallows SIGINT, so it is handled here)
- * Does nothing when stdin is not a TTY. Returns a function that stops listening.
+ *   s           -> scan now
+ *   q / Ctrl+C  -> quit (raw mode swallows SIGINT, so Ctrl+C is handled here)
+ * Works the same on macOS, Windows and Linux terminals. Does nothing when stdin
+ * is not a TTY. Returns a function that stops listening and restores the terminal.
  */
 export function listenForKeys(handlers: KeyHandlers): () => void {
   const stdin = process.stdin;
@@ -20,9 +21,13 @@ export function listenForKeys(handlers: KeyHandlers): () => void {
   stdin.resume();
 
   const onKeypress = (_str: string | undefined, key: readline.Key | undefined) => {
-    if (!key) return;
-    if (key.ctrl && key.name === 'c') handlers.onQuit();
-    else if (key.name === 's' && !key.ctrl && !key.meta) handlers.onScanNow();
+    if (!key || key.meta) return;
+    if (key.ctrl) {
+      if (key.name === 'c') handlers.onQuit();
+      return;
+    }
+    if (key.name === 'q') handlers.onQuit();
+    else if (key.name === 's') handlers.onScanNow();
   };
   stdin.on('keypress', onKeypress);
 

@@ -4,8 +4,8 @@ import { formatDuration, localTime } from '../core/time.js';
 import { fit, type Terminal } from './terminal.js';
 
 export interface StatusOptions {
-  /** Show the "s: scan now" hint while waiting. */
-  manualTrigger: boolean;
+  /** Single-key shortcuts are active: show "s: scan now" (while waiting) and "q: quit". */
+  keys: boolean;
 }
 
 interface Progress {
@@ -21,18 +21,20 @@ export function renderStatus(
   now: number,
   opts: StatusOptions,
 ): string {
+  const quit = opts.keys ? 'q: quit' : 'Ctrl+C: quit';
   if (change.state === 'searching') {
     const parts = [`Searching · scan #${change.scanNo}`];
     if (progress) {
       parts.push(`${progress.done}/${progress.total} companies`, formatDuration(now - progress.startedAt));
     }
+    parts.push(quit);
     return parts.join(' · ');
   }
   if (change.state === 'waiting' && change.nextScanAt) {
     const left = Math.max(0, change.nextScanAt.getTime() - now);
     const parts = [`Waiting · next scan at ${localTime(change.nextScanAt)} (in ${formatDuration(left)})`];
-    if (opts.manualTrigger) parts.push('s: scan now');
-    parts.push('Ctrl+C: quit');
+    if (opts.keys) parts.push('s: scan now');
+    parts.push(quit);
     return parts.join(' · ');
   }
   return '';

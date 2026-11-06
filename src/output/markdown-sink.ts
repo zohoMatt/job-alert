@@ -7,6 +7,8 @@ import { prependSection, renderScanSection } from './markdown.js';
 export interface MarkdownSink {
   /** File the most recent matches went to (today's file before any match). */
   currentPath(): string;
+  /** Files written during this run, oldest first. */
+  writtenFiles(): string[];
   /** Resolves once every queued write has finished. */
   flush(): Promise<void>;
 }
@@ -17,6 +19,7 @@ export interface MarkdownSink {
  */
 export function attachMarkdownSink(events: EngineEmitter, keywords: string[]): MarkdownSink {
   let lastPath = paths.dailyMarkdown(localDate(new Date()));
+  const written = new Set<string>();
   let queue: Promise<void> = Promise.resolve();
 
   events.on('scan:end', (report) => {
@@ -27,9 +30,10 @@ export function attachMarkdownSink(events: EngineEmitter, keywords: string[]): M
       .then(async () => {
         const existing = await readTextIfExists(file);
         await writeFileAtomic(file, prependSection(existing, renderScanSection(report, keywords), report.startedAt));
+        written.add(file);
       })
       .catch((err: Error) => console.error(`Could not write ${file}: ${err.message}`));
   });
 
-  return { currentPath: () => lastPath, flush: () => queue };
+  return { currentPath: () => lastPath, writtenFiles: () => [...written], flush: () => queue };
 }

@@ -1,6 +1,8 @@
 import pc from 'picocolors';
 import type { EngineEmitter } from '../core/events.js';
-import { formatDuration, localDateTime, localTime } from '../core/time.js';
+import { formatDuration, localDate, localDateTime, localTime } from '../core/time.js';
+import { paths } from '../store/paths.js';
+import { displayPath } from './locations.js';
 import type { Terminal } from './terminal.js';
 
 /** Prints engine events to the terminal, above the status line. */
@@ -16,6 +18,8 @@ export function attachConsoleSink(
     log(`  Companies: ${companies.length} (${companies.map((c) => c.name).join(', ')})`);
     log(`  Keywords : ${keywords.map((k) => pc.cyan(k)).join(' AND ')}`);
     log(`  Interval : every ${intervalMinutes} min`);
+    log(`  Results  : ${displayPath(paths.dailyMarkdown(localDate(startedAt)))} ${pc.dim('(one file per day, newest on top)')}`);
+    log(`             ${displayPath(paths.matchLog)} ${pc.dim('(all matches, JSON lines)')}`);
     log();
   });
 
@@ -42,7 +46,7 @@ export function attachConsoleSink(
       .filter(Boolean)
       .join(' · ');
     log(pc.bold(`✔ Scan #${r.scanNo} ended ${localDateTime(r.endedAt)} (${formatDuration(r.durationMs)})`) + `  ${summary}`);
-    if (r.newMatches.length) log(pc.dim(`  Written to ${opts.markdownPath()}`));
+    if (r.newMatches.length) log(pc.dim(`  Written to ${displayPath(opts.markdownPath())}`));
   });
 
   events.on('scan:failed', ({ scanNo, error }) => {

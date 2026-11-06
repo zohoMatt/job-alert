@@ -20,6 +20,7 @@ program
   .description('Ask for companies, keywords and interval, then scan on a schedule')
   .option('--no-prompt', 'reuse the saved settings in data/config.json without asking')
   .option('--once', 'run one scan and exit')
+  .option('--no-open', 'do not open the result file on exit')
   .action(runCommand);
 
 try {

@@ -8,6 +8,8 @@ import { attachMarkdownSink } from '../../output/markdown-sink.js';
 import { attachStatusSink } from '../../output/status-sink.js';
 import { Terminal } from '../../output/terminal.js';
 import { listenForKeys } from '../keyboard.js';
+import { openFile } from '../../core/open-file.js';
+import { displayPath, latestDailyMarkdown } from '../../output/locations.js';
 import { emptyCompaniesFile, loadCompanies, saveCompanies } from '../../store/companies-store.js';
 import { loadConfig, saveConfig, type RunConfig } from '../../store/config-store.js';
 import { MatchLog } from '../../store/match-log.js';
@@ -19,6 +21,8 @@ export interface RunOptions {
   prompt: boolean;
   /** Run a single scan and exit. */
   once?: boolean;
+  /** Open the result file on exit. `--no-open` sets this to false. */
+  open?: boolean;
 }
 
 export async function runCommand(opts: RunOptions): Promise<void> {
@@ -54,7 +58,8 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   const term = new Terminal();
   const markdown = attachMarkdownSink(events, config.keywords);
   attachConsoleSink(events, term, { markdownPath: markdown.currentPath });
-  attachStatusSink(events, term, { manualTrigger: !opts.once && process.stdin.isTTY === true });
+  const interactive = term.interactive && process.stdin.isTTY === true;
+  attachStatusSink(events, term, { keys: !opts.once && interactive });
 
   const log = await MatchLog.open();
   const matcher = new KeywordMatcher(config.keywords);
@@ -82,23 +87,28 @@ export async function runCommand(opts: RunOptions): Promise<void> {
     intervalMinutes: config.intervalMinutes,
   });
 
+  // Auto-open only for a person at a terminal, not when output is piped or scripted.
+  const finish = () => showResults(markdown.writtenFiles(), { open: opts.open !== false && interactive });
+
   if (opts.once) {
     events.emit('state', { state: 'searching', scanNo: 1, nextScanAt: null });
     await scan(1, 'scheduled');
     events.emit('state', { state: 'stopped', scanNo: 1, nextScanAt: null });
     events.emit('run:stop', { startedAt: scheduler.startedAt, stoppedAt: new Date(), scans: 1 });
+    await finish();
     return;
   }
 
   let stopping = false;
   let stopKeys = () => {};
   const shutdown = async () => {
-    if (stopping) process.exit(130); // second Ctrl+C: quit immediately
+    if (stopping) process.exit(130); // pressed again: quit immediately
     stopping = true;
-    term.log(pc.dim('\nStopping (finishing the current scan; Ctrl+C again to force)...'));
+    term.log(pc.dim('\nStopping (finishing the current scan; press q or Ctrl+C again to force)...'));
     await scheduler.stop();
     await markdown.flush();
     stopKeys();
+    await finish();
     process.exit(0);
   };
   process.on('SIGINT', shutdown);
@@ -113,4 +123,24 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   });
 
   scheduler.start();
+}
+
+/**
+ * Prints where results are and opens the Markdown file: the newest one written in
+ * this run, or else the most recent daily file from earlier runs.
+ */
+async function showResults(written: string[], opts: { open: boolean }): Promise<void> {
+  console.log(pc.bold('\nResults'));
+  if (written.length) {
+    for (const f of written) console.log(`  ${displayPath(f)}`);
+  } else {
+    console.log(pc.dim('  No new matches in this run.'));
+  }
+  console.log(`  ${displayPath(paths.matchLog)} ${pc.dim('(all matches)')}`);
+
+  if (!opts.open) return;
+  const file = written.at(-1) ?? (await latestDailyMarkdown());
+  if (!file) return;
+  const opened = await openFile(file);
+  console.log(opened ? pc.dim(`  Opened ${displayPath(file)}`) : pc.yellow(`  Could not open ${file}; open it manually.`));
 }
