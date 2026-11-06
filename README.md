@@ -34,6 +34,8 @@ Re-importing keeps entries in `companies.json` whose `source` is `manual`.
 npm start
 ```
 
+If you have run it before, it first shows the last run (when it started and stopped, or that it did not exit cleanly) and the last settings (interval, companies, keywords), and asks **Start with these settings?** Yes starts right away; No goes through the questions below with the last values as defaults. The run history is kept in `data/last-run.json`.
+
 You are asked, in order:
 
 1. **Interval** in minutes (minimum 60)

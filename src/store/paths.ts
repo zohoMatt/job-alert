@@ -8,6 +8,7 @@ export const paths = {
   outputDir: path.join(root, 'output'),
   companies: path.join(root, 'data', 'companies.json'),
   config: path.join(root, 'data', 'config.json'),
+  lastRun: path.join(root, 'data', 'last-run.json'),
   matchLog: path.join(root, 'output', 'matches.jsonl'),
   dailyMarkdown: (date: string) => path.join(root, 'output', `jobs-${date}.md`),
 };

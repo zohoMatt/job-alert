@@ -10,8 +10,17 @@ import { Terminal } from '../../output/terminal.js';
 import { listenForKeys } from '../keyboard.js';
 import { openFile } from '../../core/open-file.js';
 import { displayPath, latestDailyMarkdown } from '../../output/locations.js';
-import { emptyCompaniesFile, loadCompanies, saveCompanies } from '../../store/companies-store.js';
+import { confirm } from '@inquirer/prompts';
+import { attachRunRecordSink } from '../../output/run-record-sink.js';
+import {
+  emptyCompaniesFile,
+  loadCompanies,
+  saveCompanies,
+  type CompaniesFile,
+} from '../../store/companies-store.js';
 import { loadConfig, saveConfig, type RunConfig } from '../../store/config-store.js';
+import { loadLastRun } from '../../store/last-run.js';
+import { describeLastRun } from '../last-run-summary.js';
 import { MatchLog } from '../../store/match-log.js';
 import { paths } from '../../store/paths.js';
 import { promptRunConfig } from '../prompts.js';
@@ -29,25 +38,8 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   const companiesFile = (await loadCompanies()) ?? emptyCompaniesFile();
   const all = companiesFile.companies;
 
-  const saved = await loadConfig();
-  let config: RunConfig;
-  if (opts.prompt) {
-    const result = await promptRunConfig(all, saved);
-    if (!result) {
-      console.log(pc.dim('Not started. Nothing was saved.'));
-      return;
-    }
-    if (result.added.length) {
-      all.push(...result.added);
-      await saveCompanies(companiesFile);
-    }
-    config = result.config;
-    await saveConfig(config);
-  } else if (saved) {
-    config = saved;
-  } else {
-    throw new Error(`No saved settings in ${paths.config}. Run without --no-prompt once.`);
-  }
+  const config = await chooseConfig(opts, companiesFile);
+  if (!config) return;
 
   const missing = config.companyIds.filter((id) => !all.some((c) => c.id === id));
   if (missing.length) console.log(pc.yellow(`Ignoring companies no longer in companies.json: ${missing.join(', ')}`));
@@ -57,6 +49,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   const events = new EngineEmitter();
   const term = new Terminal();
   const markdown = attachMarkdownSink(events, config.keywords);
+  const runRecord = attachRunRecordSink(events);
   attachConsoleSink(events, term, { markdownPath: markdown.currentPath });
   const interactive = term.interactive && process.stdin.isTTY === true;
   attachStatusSink(events, term, { keys: !opts.once && interactive });
@@ -95,6 +88,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
     await scan(1, 'scheduled');
     events.emit('state', { state: 'stopped', scanNo: 1, nextScanAt: null });
     events.emit('run:stop', { startedAt: scheduler.startedAt, stoppedAt: new Date(), scans: 1 });
+    await runRecord.flush();
     await finish();
     return;
   }
@@ -107,6 +101,7 @@ export async function runCommand(opts: RunOptions): Promise<void> {
     term.log(pc.dim('\nStopping (finishing the current scan; press q or Ctrl+C again to force)...'));
     await scheduler.stop();
     await markdown.flush();
+    await runRecord.flush();
     stopKeys();
     await finish();
     process.exit(0);
@@ -123,6 +118,52 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   });
 
   scheduler.start();
+}
+
+/**
+ * Decides the settings for this run:
+ * - `--no-prompt`: the saved settings, no questions.
+ * - Saved settings exist: show the last run and its settings, ask to reuse them.
+ * - Otherwise (or the user says no): the full setup prompts.
+ * Returns null when the user does not start.
+ */
+async function chooseConfig(opts: RunOptions, companiesFile: CompaniesFile): Promise<RunConfig | null> {
+  const all = companiesFile.companies;
+  const saved = await loadConfig();
+
+  if (!opts.prompt) {
+    if (saved) return saved;
+    throw new Error(`No saved settings in ${paths.config}. Run without --no-prompt once.`);
+  }
+
+  if (saved) {
+    const record = await loadLastRun();
+    const summary = describeLastRun(record, saved, all);
+    if (summary.companies.length > 0) {
+      const [first, ...rest] = summary.lines;
+      const unclean = record != null && record.stoppedAt == null;
+      console.log();
+      if (record) console.log(unclean ? pc.yellow(first!) : pc.bold(first!));
+      else rest.unshift(first!);
+      console.log(pc.bold('Last settings'));
+      for (const line of rest) console.log(line);
+      console.log();
+      if (await confirm({ message: 'Start with these settings?', default: true })) return saved;
+      console.log(pc.dim('Set up again; the last values are the defaults.\n'));
+    }
+  }
+
+  const result = await promptRunConfig(all, saved);
+  if (!result) {
+    console.log(pc.dim('Not started. Nothing was saved.'));
+    return null;
+  }
+  if (result.added.length) {
+    all.push(...result.added);
+    await saveCompanies(companiesFile);
+  }
+  await saveConfig(result.config);
+  return result.config;
 }
 
 /**
