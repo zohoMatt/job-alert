@@ -16,6 +16,8 @@ import type { AtsProvider, FetchContext, ProbeResult, UrlMatch } from './types.j
  */
 const PAGE_SIZE = 10;
 const MAX_POSITIONS = 300;
+/** Eightfold answers 429 quickly, so fetch descriptions two at a time. */
+const DETAIL_CONCURRENCY = 2;
 
 const PositionSchema = z.object({
   id: z.number(),
@@ -85,6 +87,7 @@ export const eightfold: AtsProvider = {
         DetailSchema.parse(
           await fetchJson(`https://${site.host}/api/apply/v2/jobs/${p.id}?domain=${encodeURIComponent(site.domain)}`),
         ),
+      DETAIL_CONCURRENCY,
     );
 
     return withDetails.map(({ item: p, detail }) => {
