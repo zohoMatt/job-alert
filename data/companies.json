@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-06T04:35:44.758Z",
+  "generatedAt": "2026-11-06T20:51:50.597Z",
   "sourceFile": "C:\\Users\\Matt Zuo\\Desktop\\resumes\\all-applications\\Tasks Tracker 3a3de1a8c70c80099f9eee489b1045a0.csv",
   "companies": [
     {
@@ -28,6 +28,30 @@
       ]
     },
     {
+      "id": "workday:alkami/wd12/alkami",
+      "name": "Alkami",
+      "ats": "workday",
+      "token": "alkami/wd12/alkami",
+      "api": "https://alkami.wd12.myworkdayjobs.com/wday/cxs/alkami/alkami/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://alkami.wd12.myworkdayjobs.com/en-US/alkami/job/Sr-Software-Engineer--MANTL-_JR-000867"
+      ]
+    },
+    {
+      "id": "workday:amgen/wd1/careers",
+      "name": "Amgen",
+      "ats": "workday",
+      "token": "amgen/wd1/Careers",
+      "api": "https://amgen.wd1.myworkdayjobs.com/wday/cxs/amgen/Careers/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/Senior-UI-Developer--AI-Studio_R-256347"
+      ]
+    },
+    {
       "id": "ashby:ashby",
       "name": "Ashby",
       "ats": "ashby",
@@ -49,6 +73,18 @@
       "resolvedBy": "url",
       "sampleUrls": [
         "https://job-boards.greenhouse.io/calendly/jobs/8846049002?gh_src=f62b9zme2us"
+      ]
+    },
+    {
+      "id": "rippling:cerby",
+      "name": "Cerby",
+      "ats": "rippling",
+      "token": "cerby",
+      "api": "https://api.rippling.com/platform/api/ats/v1/board/cerby/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://ats.rippling.com/cerby/jobs/abd15dc5-39d6-4a2c-bc43-cafe55765312?src=LinkedIn"
       ]
     },
     {
@@ -111,6 +147,18 @@
       "resolvedBy": "url",
       "sampleUrls": [
         "https://job-boards.greenhouse.io/embed/job_app?token=8088201&for=coinbase"
+      ]
+    },
+    {
+      "id": "workday:cvshealth/wd1/cvs_health_careers",
+      "name": "CVS",
+      "ats": "workday",
+      "token": "cvshealth/wd1/CVS_Health_Careers",
+      "api": "https://cvshealth.wd1.myworkdayjobs.com/wday/cxs/cvshealth/CVS_Health_Careers/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers/job/Senior-Web-Developer_R0879151-1"
       ]
     },
     {
@@ -212,6 +260,18 @@
       ]
     },
     {
+      "id": "workday:deckers/wd5/deckers",
+      "name": "HOKA (Deckers)",
+      "ats": "workday",
+      "token": "deckers/wd5/Deckers",
+      "api": "https://deckers.wd5.myworkdayjobs.com/wday/cxs/deckers/Deckers/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://deckers.wd5.myworkdayjobs.com/en-US/Deckers/job/US---California-Remote/Sr-UI-Developer--eCommerce--HOKA-NA_20105"
+      ]
+    },
+    {
       "id": "ashby:horizon3ai",
       "name": "Horizon3",
       "ats": "ashby",
@@ -257,6 +317,18 @@
       "resolvedBy": "url",
       "sampleUrls": [
         "https://jobs.lever.co/iheartjane/440b0596-62b8-4a25-b88e-1d6e2bb144d0"
+      ]
+    },
+    {
+      "id": "rippling:limble-solutions",
+      "name": "Limble",
+      "ats": "rippling",
+      "token": "limble-solutions",
+      "api": "https://api.rippling.com/platform/api/ats/v1/board/limble-solutions/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://ats.rippling.com/limble-solutions/jobs/c8a9a793-49f5-4506-926a-2138ff4f00b3?jobSite=LinkedIn"
       ]
     },
     {
@@ -333,6 +405,18 @@
       ]
     },
     {
+      "id": "workable:multimediallc",
+      "name": "Multi Media LLC",
+      "ats": "workable",
+      "token": "multimediallc",
+      "api": "https://apply.workable.com/api/v3/accounts/multimediallc/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://apply.workable.com/multimediallc/j/3BF366314B/"
+      ]
+    },
+    {
       "id": "greenhouse:nebius",
       "name": "Nebius",
       "ats": "greenhouse",
@@ -342,6 +426,20 @@
       "resolvedBy": "probe",
       "sampleUrls": [
         "https://careers.nebius.com/?gh_jid=4872193101&gh_src=0c9005d2teu"
+      ]
+    },
+    {
+      "id": "eightfold:explore.jobs.netflix.net/netflix.com",
+      "name": "Netflix",
+      "ats": "eightfold",
+      "token": "explore.jobs.netflix.net/netflix.com",
+      "api": "https://explore.jobs.netflix.net/api/apply/v2/jobs?domain=netflix.com&start=0&num=10",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://explore.jobs.netflix.net/careers/job/790317589519?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com",
+        "https://explore.jobs.netflix.net/careers/job/790298020874?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com",
+        "https://explore.jobs.netflix.net/careers/job/790317890482?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com"
       ]
     },
     {
@@ -428,6 +526,18 @@
       "resolvedBy": "url",
       "sampleUrls": [
         "https://jobs.ashbyhq.com/rula/d6b330b2-65c8-4d8a-8951-84cf5868ab98"
+      ]
+    },
+    {
+      "id": "workday:salesforce/wd12/external_career_site",
+      "name": "Salesforce",
+      "ats": "workday",
+      "token": "salesforce/wd12/External_Career_Site",
+      "api": "https://salesforce.wd12.myworkdayjobs.com/wday/cxs/salesforce/External_Career_Site/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Senior---Lead-Software-Engineer--Full-Stack--Product-_JR343623"
       ]
     },
     {
@@ -610,44 +720,41 @@
       "sampleUrls": [
         "https://jobs.ashbyhq.com/weave/e68c935e-7313-48d2-86d5-0ddc9c555d4e?utm_source=AvJaxJqGKY"
       ]
+    },
+    {
+      "id": "workday:ouryahoo/wd5/careers",
+      "name": "Yahoo",
+      "ats": "workday",
+      "token": "ouryahoo/wd5/careers",
+      "api": "https://ouryahoo.wd5.myworkdayjobs.com/wday/cxs/ouryahoo/careers/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://ouryahoo.wd5.myworkdayjobs.com/en-US/careers/job/Sr-Software-Web-Engineer--Yahoo-Mail_JR0027383"
+      ]
+    },
+    {
+      "id": "workday:zillow/wd5/zillow_group_external",
+      "name": "Zillow",
+      "ats": "workday",
+      "token": "zillow/wd5/Zillow_Group_External",
+      "api": "https://zillow.wd5.myworkdayjobs.com/wday/cxs/zillow/Zillow_Group_External/jobs",
+      "source": "notion",
+      "resolvedBy": "url",
+      "sampleUrls": [
+        "https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/Senior-Software-Development-Engineer_P748924-1"
+      ]
     }
   ],
   "unresolved": [],
   "unsupported": [
     {
-      "name": "Alkami",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://alkami.wd12.myworkdayjobs.com/en-US/alkami/job/Sr-Software-Engineer--MANTL-_JR-000867"
-      ]
-    },
-    {
-      "name": "Amgen",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://amgen.wd1.myworkdayjobs.com/en-US/Careers/job/Senior-UI-Developer--AI-Studio_R-256347"
-      ]
-    },
-    {
       "name": "Autodesk",
       "platforms": [
-        "unknown (jobs.autodesk.com)"
+        "Eightfold (API blocked)"
       ],
       "sampleUrls": [
         "https://jobs.autodesk.com/careers/job/1443152976704?domain=autodesk.com&src=JB-10065&source=LinkedIn"
-      ]
-    },
-    {
-      "name": "Cerby",
-      "platforms": [
-        "Rippling"
-      ],
-      "sampleUrls": [
-        "https://ats.rippling.com/cerby/jobs/abd15dc5-39d6-4a2c-bc43-cafe55765312?src=LinkedIn"
       ]
     },
     {
@@ -683,15 +790,6 @@
         "no URL"
       ],
       "sampleUrls": []
-    },
-    {
-      "name": "CVS",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://cvshealth.wd1.myworkdayjobs.com/en-US/CVS_Health_Careers/job/Senior-Web-Developer_R0879151-1"
-      ]
     },
     {
       "name": "First Citizens Bank",
@@ -730,29 +828,11 @@
       ]
     },
     {
-      "name": "HOKA (Deckers)",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://deckers.wd5.myworkdayjobs.com/en-US/Deckers/job/US---California-Remote/Sr-UI-Developer--eCommerce--HOKA-NA_20105"
-      ]
-    },
-    {
       "name": "Intuit",
       "platforms": [
         "no URL"
       ],
       "sampleUrls": []
-    },
-    {
-      "name": "Limble",
-      "platforms": [
-        "Rippling"
-      ],
-      "sampleUrls": [
-        "https://ats.rippling.com/limble-solutions/jobs/c8a9a793-49f5-4506-926a-2138ff4f00b3?jobSite=LinkedIn"
-      ]
     },
     {
       "name": "Medallion",
@@ -766,40 +846,10 @@
     {
       "name": "Microsoft",
       "platforms": [
-        "unknown (apply.careers.microsoft.com)"
+        "Eightfold (API blocked)"
       ],
       "sampleUrls": [
         "https://apply.careers.microsoft.com/careers/job/1970393556955801?utm_source=linkedin&domain=microsoft.com&src=LinkedIn"
-      ]
-    },
-    {
-      "name": "Multi Media LLC",
-      "platforms": [
-        "Workable"
-      ],
-      "sampleUrls": [
-        "https://apply.workable.com/multimediallc/j/3BF366314B/"
-      ]
-    },
-    {
-      "name": "Netflix",
-      "platforms": [
-        "LinkedIn",
-        "Eightfold"
-      ],
-      "sampleUrls": [
-        "https://www.linkedin.com/jobs/view/4434897576/",
-        "https://explore.jobs.netflix.net/careers/job/790317589519?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com",
-        "https://explore.jobs.netflix.net/careers/job/790298020874?microsite=netflix.com&utm_source=LinkedIn&domain=netflix.com"
-      ]
-    },
-    {
-      "name": "Salesforce",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site/job/Senior---Lead-Software-Engineer--Full-Stack--Product-_JR343623"
       ]
     },
     {
@@ -819,24 +869,6 @@
       ],
       "sampleUrls": [
         "https://trunktools.com/careers/1d862ead-741b-4ce2-83f4-d914393b9ad3/"
-      ]
-    },
-    {
-      "name": "Yahoo",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://ouryahoo.wd5.myworkdayjobs.com/en-US/careers/job/Sr-Software-Web-Engineer--Yahoo-Mail_JR0027383"
-      ]
-    },
-    {
-      "name": "Zillow",
-      "platforms": [
-        "Workday"
-      ],
-      "sampleUrls": [
-        "https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/Senior-Software-Development-Engineer_P748924-1"
       ]
     }
   ]
