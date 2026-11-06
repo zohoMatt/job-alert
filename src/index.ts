@@ -6,7 +6,7 @@ import { runCommand } from './cli/commands/run.js';
 
 const program = new Command()
   .name('job-alert')
-  .description('Watch Greenhouse, Lever and Ashby job boards and report jobs that match your keywords.');
+  .description('Watch Greenhouse, Lever, Ashby, Workday, Rippling, Workable and Eightfold job boards and report jobs that match your keywords.');
 
 program
   .command('import')

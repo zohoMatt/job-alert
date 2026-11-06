@@ -1,7 +1,7 @@
 {
   "name": "job-alert",
   "version": "0.1.0",
-  "description": "Scan ATS job boards (Greenhouse/Lever/Ashby) on an interval and alert on keyword matches",
+  "description": "Scan ATS job boards (Greenhouse/Lever/Ashby/Workday/Rippling/Workable/Eightfold) on an interval and alert on keyword matches",
   "main": "dist/index.js",
   "scripts": {
     "start": "tsx src/index.ts run",
