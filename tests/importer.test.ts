@@ -23,6 +23,7 @@ describe('detectUrl', () => {
     ['https://jobs.lever.co/iheartjane/440b0596', 'lever:token:iheartjane'],
     ['https://zillow.wd5.myworkdayjobs.com/en-US/Zillow_Group_External/job/X_P1', 'workday:token:zillow/wd5/Zillow_Group_External'],
     ['https://amgen.wd1.myworkdayjobs.com/Careers/job/Y_R-1', 'workday:token:amgen/wd1/Careers'],
+    ['https://ats.rippling.com/cerby/jobs/abd15dc5?src=LinkedIn', 'rippling:token:cerby'],
     ['https://www.linkedin.com/jobs/view/4434897576/', 'unsupported:LinkedIn'],
     ['https://www.shopify.com/careers/x', 'unsupported:unknown (shopify.com)'],
     ['', 'none'],

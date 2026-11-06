@@ -2,10 +2,11 @@ import { companyId, type AtsId, type Company } from '../types.js';
 import { ashby } from './ashby.js';
 import { greenhouse } from './greenhouse.js';
 import { lever } from './lever.js';
+import { rippling } from './rippling.js';
 import type { AtsProvider } from './types.js';
 import { workday } from './workday.js';
 
-export const providers: readonly AtsProvider[] = [greenhouse, lever, ashby, workday];
+export const providers: readonly AtsProvider[] = [greenhouse, lever, ashby, workday, rippling];
 
 export function getProvider(id: AtsId): AtsProvider {
   const p = providers.find((x) => x.id === id);
