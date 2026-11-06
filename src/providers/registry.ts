@@ -4,9 +4,10 @@ import { greenhouse } from './greenhouse.js';
 import { lever } from './lever.js';
 import { rippling } from './rippling.js';
 import type { AtsProvider } from './types.js';
+import { workable } from './workable.js';
 import { workday } from './workday.js';
 
-export const providers: readonly AtsProvider[] = [greenhouse, lever, ashby, workday, rippling];
+export const providers: readonly AtsProvider[] = [greenhouse, lever, ashby, workday, rippling, workable];
 
 export function getProvider(id: AtsId): AtsProvider {
   const p = providers.find((x) => x.id === id);

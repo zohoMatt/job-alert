@@ -11,7 +11,6 @@ export type Detection =
 const KNOWN_UNSUPPORTED: Array<[suffix: string, platform: string]> = [
   ['icims.com', 'iCIMS'],
   ['linkedin.com', 'LinkedIn'],
-  ['workable.com', 'Workable'],
   ['jobs.netflix.net', 'Eightfold'],
   ['my.greenhouse.io', 'Greenhouse applicant portal (not a job board)'],
 ];
