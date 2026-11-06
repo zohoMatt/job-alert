@@ -21,6 +21,7 @@ program
   .option('--no-prompt', 'reuse the saved settings in data/config.json without asking')
   .option('--once', 'run one scan and exit')
   .option('--no-open', 'do not open the result file on exit')
+  .option('--clear', 'delete local search results (output/) before starting, without asking')
   .action(runCommand);
 
 try {

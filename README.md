@@ -34,7 +34,9 @@ Re-importing keeps entries in `companies.json` whose `source` is `manual`.
 npm start
 ```
 
-If you have run it before, it first shows the last run (when it started and stopped, or that it did not exit cleanly) and the last settings (interval, companies, keywords), and asks **Start with these settings?** Yes starts right away; No goes through the questions below with the last values as defaults. The run history is kept in `data/last-run.json`.
+If `output/` already has search results, it first shows how many (daily files and recorded matches) and asks **Clear all local search results?** (default No). Clearing deletes the daily Markdown files and `matches.jsonl`, so every current match is reported as new again. Other files in `output/` are kept.
+
+If you have run it before, it then shows the last run (when it started and stopped, or that it did not exit cleanly) and the last settings (interval, companies, keywords), and asks **Start with these settings?** Yes starts right away; No goes through the questions below with the last values as defaults. The run history is kept in `data/last-run.json`.
 
 You are asked, in order:
 
@@ -50,6 +52,7 @@ Nothing is saved until you confirm. Then your answers go to `data/config.json` (
 npm start -- --no-prompt   # reuse saved settings
 npm start -- --once        # one scan, then exit
 npm start -- --no-open     # do not open the result file on exit
+npm start -- --clear       # delete local search results first, without asking
 ```
 
 Each scan prints its start time, end time and duration, then how long the program has been running and when the next scan is. New matches are printed as `company · title · URL`.

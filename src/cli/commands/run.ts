@@ -1,3 +1,4 @@
+import path from 'node:path';
 import pc from 'picocolors';
 import { EngineEmitter } from '../../core/events.js';
 import { runScan } from '../../core/scanner.js';
@@ -20,6 +21,7 @@ import {
 } from '../../store/companies-store.js';
 import { loadConfig, saveConfig, type RunConfig } from '../../store/config-store.js';
 import { loadLastRun } from '../../store/last-run.js';
+import { clearResults, describeResults } from '../../store/results.js';
 import { describeLastRun } from '../last-run-summary.js';
 import { MatchLog } from '../../store/match-log.js';
 import { paths } from '../../store/paths.js';
@@ -32,12 +34,15 @@ export interface RunOptions {
   once?: boolean;
   /** Open the result file on exit. `--no-open` sets this to false. */
   open?: boolean;
+  /** Delete local search results before starting, without asking. */
+  clear?: boolean;
 }
 
 export async function runCommand(opts: RunOptions): Promise<void> {
   const companiesFile = (await loadCompanies()) ?? emptyCompaniesFile();
   const all = companiesFile.companies;
 
+  await maybeClearResults(opts);
   const config = await chooseConfig(opts, companiesFile);
   if (!config) return;
 
@@ -118,6 +123,37 @@ export async function runCommand(opts: RunOptions): Promise<void> {
   });
 
   scheduler.start();
+}
+
+/**
+ * Offers to delete the local search results (daily Markdown files and matches.jsonl).
+ * `--clear` deletes without asking; otherwise asks only when prompting and there is
+ * something to delete. Default answer is No.
+ */
+async function maybeClearResults(opts: RunOptions): Promise<void> {
+  const found = await describeResults();
+  if (found.files.length === 0) {
+    if (opts.clear) console.log(pc.dim('No local search results to clear.'));
+    return;
+  }
+
+  if (!opts.clear) {
+    if (!opts.prompt) return;
+    const days = found.dailyFiles.map((f) => path.basename(f, '.md').replace(/^jobs-/, ''));
+    const range = days.length === 0 ? '' : days.length === 1 ? ` (${days[0]})` : ` (${days[0]} to ${days.at(-1)})`;
+    console.log();
+    console.log(pc.bold('Local search results'));
+    console.log(`  ${found.dailyFiles.length} daily file(s)${range} and ${found.matches} recorded match(es) in ${displayPath(paths.outputDir)}`);
+    console.log(pc.dim('  Clearing them makes every current match count as new again.'));
+    const yes = await confirm({
+      message: 'Clear all local search results?',
+      default: false,
+    });
+    if (!yes) return;
+  }
+
+  const cleared = await clearResults();
+  console.log(pc.yellow(`  Cleared ${cleared.files.length} file(s): ${cleared.dailyFiles.length} daily file(s) and the match log.`));
 }
 
 /**
