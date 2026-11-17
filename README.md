@@ -10,28 +10,7 @@ npm install
 
 Requires Node.js 22+. Works on macOS, Windows and Linux.
 
-## 1. Import companies from Notion
-
-Export the Notion applications database as CSV, then:
-
-```bash
-npm run import -- "path/to/Tasks Tracker.csv"
-```
-
-This writes `data/companies.json`: one entry per company board (ATS, board token, API URL).
-The Notion table is only used to discover which ATS each company uses and its board token.
-
-- **Board URLs** (`job-boards.greenhouse.io/<token>/…`, `jobs.ashbyhq.com/<token>/…`, `jobs.lever.co/<token>/…`, `ats.rippling.com/<token>/…`, `apply.workable.com/<token>/…`): token is read from the URL.
-  - Workday (`<tenant>.wd5.myworkdayjobs.com/<site>/…`): token is `tenant/wd5/site`.
-  - Eightfold (`<host>/careers/job/…?domain=<domain>`, e.g. Netflix): token is `host/domain`.
-- **Workday and Eightfold scans** search the board with your keywords first (these boards can hold thousands of jobs and need one request per description), then apply the usual keyword match. Job descriptions on these platforms, and on Rippling and Workable, are fetched once per job and cached while the watcher runs.
-- **Career sites that hide the board** (`…?gh_jid=…`, `…?ashby_jid=…`): the token is guessed from the company name and site, then confirmed against the API (marked `*`).
-- **Not found**: printed as an error with the tokens tried; no token is saved. Add the board URL to Notion and re-import.
-- **Unsupported** (iCIMS, LinkedIn, Eightfold sites that block the API such as Microsoft and Autodesk, …): listed and skipped.
-
-Re-importing keeps entries in `companies.json` whose `source` is `manual`.
-
-## 2. Run
+## Run
 
 ```bash
 npm start
@@ -44,12 +23,12 @@ If you have run it before, it then shows the last run (when it started and stopp
 You are asked, in order:
 
 1. **Interval** in minutes (minimum 60)
-2. **Companies** to scan: checkbox list from `companies.json`
+2. **Companies** to scan: checkbox list of companies you added before (empty the first time)
 3. **Extra companies**: pick a platform (Greenhouse / Lever / Ashby / Workday / Rippling / Workable / Eightfold), then enter board ids or board URLs, comma separated. Each id is checked against the API right away. Repeats until you pick "No more companies".
 4. **Keywords**, comma separated. Every keyword must appear (AND), as a whole word, case-insensitive, anywhere in the title, location, department or job description.
 5. **Start scanning?** after a summary
 
-Nothing is saved until you confirm. Then your answers go to `data/config.json` (defaults for next time), and extra companies are added to `data/companies.json` with `"source": "manual"`, so they appear in the list next time and survive re-imports. You can skip the Notion import entirely and add every company this way.
+Nothing is saved until you confirm. Then your answers go to `data/config.json` (defaults for next time), and extra companies are added to `data/companies.json` with `"source": "manual"`, so they appear in the list next time.
 
 ```bash
 npm start -- --no-prompt   # reuse saved settings
@@ -92,8 +71,7 @@ A role is **new** if neither the role (company + title) nor any of its postings 
 ```
 src/
   index.ts              CLI (commander)
-  cli/                  prompts and commands (import, run)
-  importer/             Notion CSV -> companies.json (URL detection, token probing)
+  cli/                  prompts and commands
   companies/            add companies by platform + board id
   providers/            one file per ATS, behind the AtsProvider interface
   matching/             Matcher interface + KeywordMatcher
